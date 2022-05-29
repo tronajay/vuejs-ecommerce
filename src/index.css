@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu-item {
+    @apply px-5 py-2 mx-1 rounded
+}
+
+.menu-item:hover {
+    @apply bg-blue-500
+}
+
+
+@tailwind utilities;
