@@ -7,6 +7,7 @@ class ProductSerializer(serializers.Serializer):
     desc = serializers.CharField(max_length=1000)
     price = serializers.CharField(max_length=20)
     selling_price = serializers.CharField(max_length=20)
+    feature_img = serializers.URLField(max_length=500)
 
     def create(self,validated_data):
         return Product.objects.create(**validated_data)

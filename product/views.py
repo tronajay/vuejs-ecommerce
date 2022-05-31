@@ -14,7 +14,7 @@ class ProductViewSet(ViewSet):
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=200,data="Product Created Successfully")
+            return Response(status=200,data=serializer.data)
         return Response(status=400,data=serializer.errors)
         
     def get(self,request):
@@ -32,5 +32,5 @@ class ProductViewSet(ViewSet):
         serializer = ProductSerializer(data=request.data,instance=product,partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=200,data="Product Updated Successfully")
+            return Response(status=200,data=serializer.data)
         return Response(status=400,data=serializer.errors)
