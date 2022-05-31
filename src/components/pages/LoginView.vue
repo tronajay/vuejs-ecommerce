@@ -1,8 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container p-3">
     <div
       class="mx-auto md:w-2/3 border border-gray-300 p-5 shadow-md mt-10 rounded-lg"
     >
+    <div class="header text-center my-2">
+      <h2 class="font-bold text-2xl">
+        Login
+      </h2>
+    </div>
       <form @submit.prevent="handleLogin">
         <div class="mb-6">
           <label
@@ -14,8 +19,8 @@
             type="text"
             id="username"
             v-model="user.username"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="name@flowbite.com"
+            class="bg-gray-50 border focus:ring-1 focus:outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Enter Username"
           />
         </div>
         <div class="mb-6">
@@ -29,7 +34,7 @@
             id="password"
             placeholder="Enter Password"
             v-model="user.password"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           />
         </div>
         <button

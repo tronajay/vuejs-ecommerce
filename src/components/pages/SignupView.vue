@@ -1,7 +1,12 @@
 <template>
 
-    <div class="container">
+    <div class="container p-3">
         <div class="mx-auto md:w-2/3 border border-gray-300 p-5 shadow-md mt-10 rounded-lg">
+            <div class="header text-center my-2">
+                <h2 class="font-bold text-xl">
+                    Register
+                </h2>
+            </div>
             <div v-if="http_error" class="error bg-red-200 border mb-2 rounded-lg px-3 py-1">
                 {{ message }}
             </div>
@@ -9,7 +14,7 @@
                 <div class="mb-6">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                     <input type="text" id="username" v-model="user.username" @keyup="checkUsername"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                         placeholder="Enter username">
                     <div v-if="errors.username" class="error text-sm my-2 text-red-500">
                         {{ errors.username }}</div>
@@ -17,7 +22,7 @@
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                     <input type="text" id="email" v-model="user.email" @keyup="checkEmail"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                         placeholder="mail@example.com">
                     <div v-if="errors.email" class="error text-sm my-2 text-red-500">
                         {{ errors.email }}</div>
@@ -27,7 +32,7 @@
                         password</label>
                     <input type="password" id="password" placeholder="Enter Password" v-model="user.password"
                         @keyup="checkPassword"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     <div v-if="errors.password" class="error text-sm my-2 text-red-500">
                         {{ errors.password }}</div>
                 </div>

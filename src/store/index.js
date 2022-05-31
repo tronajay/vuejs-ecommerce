@@ -10,6 +10,10 @@ export default createStore({
     },
     token: "",
     isAuthenticated: false,
+    isLoading: false,
+    httpError: false,
+    httpSuccess: false,
+    httpMessage: "",
   },
   mutations: {
     initializeStore(state) {
@@ -55,6 +59,22 @@ export default createStore({
     addAddress(state,address){
       state.cart.address = address;
       localStorage.setItem("cart",JSON.stringify(state.cart));
+    },
+    setIsLoading(state,value){
+      state.isLoading = value;
+    },
+    setHttpError(state,message){
+      state.httpError = true;
+      state.httpMessage = message;
+    },
+    clearHttpAlert(state){
+      state.httpError = false;
+      state.httpMessage = false;
+      state.httpMessage = "";
+    },
+    setHttpSuccess(state,message){
+      state.httpSuccess = true;
+      state.httpMessage = message;
     }
   },
 });

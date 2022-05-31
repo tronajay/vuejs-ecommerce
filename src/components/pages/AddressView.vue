@@ -2,12 +2,11 @@
 import AddressCard from "../Address/AddressCard.vue";
 import Address from "../../models/address";
 import CartSidebar from "../Cart/CartSidebar.vue";
-import axios from "axios";
+import APIService from "../../services/api-call";
 export default {
   data() {
     return {
       saved_address: [],
-      order_placed: false,
       address: new Address("", "", "", "", "", "", "", ""),
     };
   },
@@ -20,10 +19,9 @@ export default {
       return this.$store.state.isAuthenticated;
     },
   },
-  created() {
-    axios.get("/api/address/").then((response) => {
-      this.saved_address = response.data;
-    });
+  async created() {
+    var response = await new APIService("/api/address/", {}).get();
+    this.saved_address = response.data;
   },
   mounted() {
     if (!this.loggedIn) {
@@ -35,24 +33,16 @@ export default {
       this.$store.commit("addAddress", address);
     },
     async submitAddress() {
-      await axios
-        .post("/api/address/", this.address)
-        .then(
-          (response) => this.selectAddress(response.data),
-          this.$router.go(0)
-        );
+      var response = await new APIService("/api/address/", this.address).post();
+      this.selectAddress(response.data), this.$router.push('/cart/');
     },
-    orderPlaced(){
-      this.order_placed = true;
-      this.$store.commit("clearCart");
-    }
   },
 };
 </script>
 
 <template>
   <div class="container">
-    <div v-if="!order_placed" class="container mx-auto">
+    <div class="container mx-auto">
       <div class="rounded-lg p-5 w-4/5 mx-auto mt-5 border shadow-md">
         <div class="header font-bold text-xl mb-2">Saved Address</div>
         <hr />
@@ -63,11 +53,6 @@ export default {
             :address="address"
             v-on:selectAddress="selectAddress"
           ></AddressCard>
-          <div class="my-2 flex justify-end">
-            <button @click="orderPlaced" class="bg-blue-500 shadow-lg border-b-2 border-r-2 border-white px-5 py-2 rounded-lg text-white font-bold">
-              Place Order
-            </button>
-          </div>
         </div>
       </div>
       <div class="rounded-lg w-4/5 mx-auto p-5 mt-10 border shadow-md">
@@ -237,13 +222,6 @@ export default {
           </form>
         </div>
       </div>
-    </div>
-    <div v-if="order_placed" class="w-full mt-10 text-center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/BlueFlat_tick_icon.svg/512px-BlueFlat_tick_icon.svg.png" class="w-48 mx-auto h-48" alt="">
-      <p class="font-bold my-10 text-xl">
-        Order Placed Successfully
-      </p>
-      <RouterLink to="/" class="bg-blue-500 mt-10 rounded-lg px-10 text-lg shadow-md py-2 text-white ">Go to Home</RouterLink>
     </div>
   </div>
 </template>

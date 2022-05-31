@@ -24,7 +24,7 @@ export default {
       type="radio"
       name="countries"
       :value="address.id"
-      class="w-4 h-4 border-gray-300"
+      class="w-10 h-10 md:w-6 md:h-6 mr-4 border-gray-300"
       @click="selectAddress(address)"
       :checked="selected_address==address.id?true:false"
     />

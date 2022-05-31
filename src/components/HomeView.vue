@@ -1,6 +1,6 @@
 <script>
-import axios from "axios";
 import ProductCard from "./product/ProductCard.vue";
+import APIService from "../services/api-call";
 
 export default {
     components: {
@@ -14,15 +14,9 @@ export default {
     };
   },
 
-  created() {
-    axios
-      .get("/api/product/")
-      .then((response) => {
-        this.products = response.data;
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
+  async created() {
+    var response = await new APIService('/api/product/',{}).get();
+    this.products = response.data;
   },
   methods: {},
 };

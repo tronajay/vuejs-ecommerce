@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="feature-img relative w-full">
+    <div class="feature-img relative w-full p-3">
       <img
-        src="https://picsum.photos/300/200"
+        :src="product.feature_img"
         alt=""
         class="object-fill w-full rounded-t-lg"
       />
@@ -71,9 +71,9 @@
       <div class="flex justify-between items-center">
         <p class="price font-bold text-xl">
           <span
-            >Rs.{{ product.selling_price }}
+            >₹{{ product.selling_price }}
             <span class="line-through">
-              Rs.{{ product.price }}
+              ₹{{ product.price }}
             </span>
           </span>
         </p>
