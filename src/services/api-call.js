@@ -2,10 +2,11 @@ import axios from "axios";
 import store from "../store/index";
 
 export default class APIService {
-  constructor(url, data) {
+  constructor(url, data,e_msg="") {
     this.data = data;
     this.url = url;
     this.resp = {};
+    this.e_msg = e_msg;
     this.status = false;
     store.commit("setIsLoading", true);
     store.commit("clearHttpAlert");
@@ -16,6 +17,7 @@ export default class APIService {
       .post(this.url, this.data)
       .then((response) => {
         this.resp = response;
+        console.log(response)
       })
       .catch((error) => {
         this.resp = error.response;
@@ -23,10 +25,15 @@ export default class APIService {
     if ((this.resp.status >= 200) & (this.resp.status < 400)) {
       this.status = true;
     } else {
+      console.log(this.resp);
       if (this.resp.data.error) {
         store.commit("setHttpError", this.resp.data.error);
       } else {
-        store.commit("setHttpError", "Something Went Wrong");
+        if(this.e_msg){
+          store.commit("setHttpError", this.e_msg);
+        }else{
+          store.commit("setHttpError", "Something Went Wrong");
+        }
       }
     }
     store.commit("setIsLoading", false);

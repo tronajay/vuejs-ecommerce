@@ -108,7 +108,7 @@ export default {
       <!-- Cart Sidebar: End -->
     </div>
   </div>
-  <div v-else class="empty-cart mt-20 text-center">
+  <div v-else class="empty-cart px-3 mt-20 text-center">
     <div class="text-gray-500 text-xl w-full">
       <img
         src="http://cdn.onlinewebfonts.com/svg/img_456359.png"

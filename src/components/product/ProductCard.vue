@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="">
     <div class="feature-img relative w-full p-3">
-      <img
+      <RouterLink :to="'/product/' + product.slug ">
+        <img
         :src="product.feature_img"
         alt=""
-        class="object-fill w-full rounded-t-lg"
+        class="w-full rounded-t-lg"
       />
-      <RouterLink :to="'/product/' + product.id" v-if="isLoggedIn" class="text-white bg-blue-500 px-4 rounded-lg py-0.5 absolute top-4 right-4">Edit</RouterLink>
+      </RouterLink>
+      <RouterLink :to="'/product/' + product.uuid + '/edit/'" v-if="isLoggedIn" class="text-white bg-blue-500 px-4 rounded-lg py-0.5 absolute top-4 right-4">Edit</RouterLink>
     </div>
     <div class="card-content p-3">
       <h2 class="font-bold text-xl">

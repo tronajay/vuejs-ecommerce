@@ -1,8 +1,9 @@
 <template>
   <div class="container p-3">
     <div
-      class="mx-auto md:w-2/3 border border-gray-300 p-5 shadow-md mt-10 rounded-lg"
+      class="mx-auto relative md:w-2/3 border border-gray-300 p-5 shadow-md mt-10 rounded-lg"
     >
+    <loading-bar-contain/>
     <div class="header text-center my-2">
       <h2 class="font-bold text-2xl">
         Login
@@ -50,6 +51,8 @@
 <script>
 import User from "../../models/user";
 import axios from "axios";
+import APIService from "../../services/api-call";
+import LoadingBarContain from "../Loading/LoadingBarContain.vue";
 export default {
   name: "LoginView",
   data() {
@@ -58,6 +61,9 @@ export default {
       loading: false,
       message: "",
     };
+  },
+  components: {
+    LoadingBarContain,
   },
   computed: {
     loggedIn() {
@@ -72,23 +78,35 @@ export default {
   methods: {
     async handleLogin() {
       axios.defaults.headers.common["Authorization"] = "";
-      localStorage.removeItem("token");
-      await axios
-        .post("/api/login/", this.user)
-        .then((response) => {
-          const token = response.data.access;
+      const error_message  = "Invalid Username or Password"
+      var response = await new APIService('/api/login/',this.user,error_message).post();
+      if (response.status){
+        const token = response.data.access;
           this.$store.commit("setToken", token);
 
-          axios.defaults.headers.common["Authorization"] = "Token " + token;
+          axios.defaults.headers.common["Authorization"] = "Bearer " + token;
           localStorage.setItem("token", token);
           const url = this.$route.query.to || "/";
           this.$router.push(url);
-        })
-        .catch((error) => {
-          {
-            this.errors.push("Something went wrong. Please try again");
-          }
-        });
+      }else{
+
+      }
+      // await axios
+      //   .post("/api/login/", this.user)
+      //   .then((response) => {
+      //     const token = response.data.access;
+      //     this.$store.commit("setToken", token);
+
+      //     axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+      //     localStorage.setItem("token", token);
+      //     const url = this.$route.query.to || "/";
+      //     this.$router.push(url);
+      //   })
+      //   .catch((error) => {
+      //     {
+      //       this.errors.push("Something went wrong. Please try again");
+      //     }
+      //   });
     },
   },
 };

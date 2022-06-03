@@ -2,8 +2,9 @@
   <div class="container p-3">
     <div
       id="product-form"
-      class="p-3 mx-auto md:w-2/3 mt-5 rounded-lg border shadow-md border-gray-300"
+      class="p-3 relative mx-auto md:w-2/3 mt-5 rounded-lg border shadow-md border-gray-300"
     >
+    <loading-bar-contain/>
       <div class="heading">
         <h2 class="font-bold text-center text-xl mb-5">Add Product</h2>
       </div>
@@ -95,6 +96,7 @@
 <script>
 import Product from "../../models/product";
 import APIService from "../../services/api-call";
+import LoadingBarContain from "../Loading/LoadingBarContain.vue";
 export default {
   data() {
     return {
@@ -102,6 +104,9 @@ export default {
       resp: "",
       error: "",
     };
+  },
+  components: {
+    LoadingBarContain,
   },
   computed: {
     currentUser() {

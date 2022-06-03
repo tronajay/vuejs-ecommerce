@@ -3,6 +3,7 @@ import AddressCard from "../Address/AddressCard.vue";
 import Address from "../../models/address";
 import CartSidebar from "../Cart/CartSidebar.vue";
 import APIService from "../../services/api-call";
+import LoadingBar from "../LoadingBar.vue";
 export default {
   data() {
     return {
@@ -13,6 +14,7 @@ export default {
   components: {
     AddressCard,
     CartSidebar,
+    LoadingBar,
   },
   computed: {
     loggedIn() {
@@ -46,6 +48,7 @@ export default {
       <div class="rounded-lg p-5 w-4/5 mx-auto mt-5 border shadow-md">
         <div class="header font-bold text-xl mb-2">Saved Address</div>
         <hr />
+        <loading-bar/>
         <div class="saved-address mt-5">
           <AddressCard
             v-for="address in saved_address"

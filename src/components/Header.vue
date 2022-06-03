@@ -13,7 +13,7 @@
       </div>
       <div 
       :class="{'hidden md:block': !isOpen }"
-      class="menu text-center mt-2 transition duration-300">
+      class="menu text-center mt-2 transition-all duration-300">
         <ul class="md:flex items-center">
           <li class="menu-item">
             <RouterLink to="/">Home</RouterLink>

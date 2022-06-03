@@ -1,10 +1,12 @@
 <script>
 import ProductCard from "./product/ProductCard.vue";
 import APIService from "../services/api-call";
+import LoadingBar from "./LoadingBar.vue";
 
 export default {
     components: {
-        ProductCard
+        ProductCard,
+        LoadingBar
     },
   data() {
     return {
@@ -38,6 +40,7 @@ export default {
         >Add Product
       </RouterLink>
     </div>
+    <loading-bar/>
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-3 mt-5"
     >
