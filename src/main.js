@@ -7,8 +7,8 @@ import './index.css'
 import store from './store'
 import axios from 'axios'
 
-// axios.defaults.baseURL = 'https://ecommerce-drf.herokuapp.com'
-axios.defaults.baseURL = "http://localhost:8000"
+axios.defaults.baseURL = 'https://ecommerce-drf.herokuapp.com'
+// axios.defaults.baseURL = "http://localhost:8000"
 
 const app = createApp(App).use(store)
 
