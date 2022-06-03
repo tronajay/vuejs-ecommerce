@@ -28,8 +28,8 @@ class ProductViewSet(ViewSet):
         serializer = ProductSerializer(product)
         return Response(status=200,data=serializer.data)
     
-    def update(self,request,pk):
-        product = Product.objects.get(pk=pk)
+    def update(self,request,product_uuid):
+        product = Product.objects.get(uuid=product_uuid)
         serializer = ProductSerializer(data=request.data,instance=product,partial=True)
         if serializer.is_valid():
             serializer.save()
