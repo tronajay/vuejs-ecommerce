@@ -1,14 +1,15 @@
 <template>
+<RouterLink :to="'/product/' + product.uuid + '/edit/'" v-if="isLoggedIn" class="text-white bg-blue-500 px-4 rounded-lg py-0.5 absolute top-4 right-4">Edit</RouterLink>
   <div class="">
-    <div class="feature-img relative w-full p-3">
+    <div class="feature-img h-56 w-56 text-center p-3 mx-auto my-3">
       <RouterLink :to="'/product/' + product.slug ">
         <img
         :src="product.feature_img"
         alt=""
-        class="w-full rounded-t-lg"
+        class="object-scale-down h-56 w-full rounded-t-lg"
       />
       </RouterLink>
-      <RouterLink :to="'/product/' + product.uuid + '/edit/'" v-if="isLoggedIn" class="text-white bg-blue-500 px-4 rounded-lg py-0.5 absolute top-4 right-4">Edit</RouterLink>
+      
     </div>
     <div class="card-content p-3">
       <h2 class="font-bold text-xl">
@@ -71,8 +72,8 @@
         >
       </div>
       <div class="flex justify-between items-center">
-        <p class="price font-bold text-xl">
-          <span
+        <p class="price font-bold text-lg">
+          <span class="flex flex-col"
             >₹{{ product.selling_price }}
             <span class="line-through">
               ₹{{ product.price }}

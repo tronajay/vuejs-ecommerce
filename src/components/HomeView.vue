@@ -17,6 +17,7 @@ export default {
   },
 
   async created() {
+    document.title = "Home";
     var response = await new APIService('/api/product/',{}).get();
     this.products = response.data;
   },
@@ -42,7 +43,7 @@ export default {
     </div>
     <loading-bar/>
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-3 mt-5"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-3 mt-5"
     >
       <div
         v-for="product in products"

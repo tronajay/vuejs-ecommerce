@@ -8,6 +8,7 @@ import SignupView from '../components/pages/SignupView.vue'
 import Cart from '../components/pages/Cart.vue';
 import AddressView from '../components/pages/AddressView.vue';
 import ProductView from '../views/Product/ProductView.vue'
+import SearchView from '../views/Product/SearchView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: '/address',
       name: "address",
       component: AddressView
+    },
+    {
+      path: '/search',
+      name: "search",
+      component: SearchView
     },
 
 
