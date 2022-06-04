@@ -3,6 +3,7 @@ from base.models import  BaseModel
 
 class ProductCategory(BaseModel):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100,blank=True,null=True,unique=True)
     image = models.CharField(max_length=500)
 
     def __str__(self):
@@ -11,7 +12,7 @@ class ProductCategory(BaseModel):
 # Create your models here.
 class Product(BaseModel):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200,blank=True,null=True)
+    slug = models.SlugField(max_length=200,blank=True,null=True,unique=True)
     price = models.CharField(max_length=20,blank=True,null=True)
     selling_price = models.CharField(max_length=20,blank=True,null=True)
     desc = models.CharField(max_length=500)

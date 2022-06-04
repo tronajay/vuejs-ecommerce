@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import ProductViewSet
+
+from product.models import ProductCategory
+from .views import ProductCategoryViewSet, ProductViewSet
 
 urlpatterns = [
     path(
@@ -17,4 +19,14 @@ urlpatterns = [
         ProductViewSet.as_view({"get":"product_detail"}),
         name="product_detail_view"
     ),
+    path(
+        "product/search/",
+        ProductViewSet.as_view({"get":"search_products"}),
+        name="product_search_view"
+    ),
+    path(
+        "product-category/",
+        ProductCategoryViewSet.as_view({"get":"list","post":"create"}),
+        name="product_category_view"
+    )
 ]
