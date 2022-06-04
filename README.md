@@ -1,35 +1,33 @@
-# vue-project
+# eCommerce Web App
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a eCommerce web app developed using VueJs on Frontend and Django/DRF on Backend.
 
-## Recommended IDE Setup
+Checkout live demo [here](https://vuejs-ecommerce.netlify.app/).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+# Tools and Framework used
+![VueJs](https://img.shields.io/badge/Vue_JS-35495E?style=for-the-badge&logo=vuedotjs&logoColor=white)
+![Tailwindcss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646cff?style=for-the-badge&logo=vite&logoColor=white)
 
-## Customize configuration
+# Features
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Login/Signup
+- Logout
+- Homepage (Products List)
+- Product View Page
+- Cart Page
+- Address Page
+- more coming soon.
 
-## Project Setup
+# How to Run the Project?
 
-```sh
-npm install
-```
+ Make sure `nodejs` is installed.
+ 
+ - Open the Project on any Code Editor
+ - Open the Integrated Terminal
+ - Run `npm install` (It will install the required node modules).
+ - Type `npm run dev` to run the server
 
-### Compile and Hot-Reload for Development
+Checkout Backend [Process](https://github.com/tronajay/vuejs-ecommerce/tree/backend) to run backend Server.
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Devloped by [Ajay Patel](https://github.com/tronajay)
